@@ -8,6 +8,8 @@ public class AutoPenTemplateCreator {
         File signatureImageFile = new File("C:\\Users\\user\\Pictures\\signature_test.png");
         var imagePixels = ImageReader.readImage(signatureImageFile.toPath());
 
+        FiveBar fiveBar = new FiveBar(5, 3);
+
         imagePixels.forEach(pixelRow -> {
             pixelRow.forEach(pixel -> {
                 System.out.print((pixel.isWhite() ? 0 : 1));
