@@ -1,13 +1,12 @@
 package tech.gesp;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public class LeverAngles {
 
     private double firstAngle;
     private double secondAngle;
-
-    public LeverAngles(FiveBar fivebar) {
-        
-    }
 
     public double getFirst() {
         return firstAngle;
