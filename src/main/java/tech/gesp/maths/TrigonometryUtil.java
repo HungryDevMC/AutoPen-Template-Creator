@@ -1,4 +1,4 @@
-package tech.gesp;
+package tech.gesp.maths;
 
 public final class TrigonometryUtil {
 

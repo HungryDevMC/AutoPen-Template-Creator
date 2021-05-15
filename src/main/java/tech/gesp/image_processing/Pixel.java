@@ -1,4 +1,4 @@
-package tech.gesp;
+package tech.gesp.image_processing;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
