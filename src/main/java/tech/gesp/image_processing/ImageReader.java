@@ -1,5 +1,7 @@
 package tech.gesp.image_processing;
 
+import tech.gesp.maths.Vector2D;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -18,7 +20,7 @@ public class ImageReader {
             List<Pixel> row = new ArrayList<>();
             for (int rowNumber = 0; rowNumber < width; rowNumber++) {
                 int pixel = image.getRGB(rowNumber, column);
-                row.add(new Pixel(pixel == -1));
+                row.add(new Pixel(pixel == -1, new Vector2D(column, rowNumber)));
             }
             pixels.add(row);
         }

@@ -1,6 +1,13 @@
-package tech.gesp;
+package tech.gesp.autopen_translation;
 
 import lombok.Getter;
+import tech.gesp.image_processing.Pixel;
+import tech.gesp.image_processing.PixelImage;
+import tech.gesp.maths.TrigonometryUtil;
+import tech.gesp.maths.Vector2D;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 public class FiveBar {
@@ -47,4 +54,33 @@ public class FiveBar {
         return angleO1 - 90;
     }
 
+    public List<Vector2D> getAllBlackPixelPosition(PixelImage pixelImage) {
+        List<Vector2D> blackPixelPositions = new ArrayList<>();
+        for (int row = 0; row < pixelImage.getPixels().size(); row++) {
+            List<Pixel> pixelRow = pixelImage.getPixels().get(row);
+            for (int column = 0; column < pixelRow.size(); column++) {
+                Pixel pixel = pixelRow.get(column);
+                if (!pixel.isWhite()) {
+                    blackPixelPositions.add(new Vector2D(row, column));
+                }
+            }
+        }
+        return blackPixelPositions;
+    }
+
+    public List<LeverAngles> generateLeverAnglesFromPixelImage(PixelImage pixelImage) {
+        List<LeverAngles> leverAnglesList = new ArrayList<>();
+        for (int row = 0; row < pixelImage.getPixels().size(); row++) {
+            List<Pixel> pixelRow = pixelImage.getPixels().get(row);
+            for (int column = 0; column < pixelRow.size(); column++) {
+                Pixel pixel = pixelRow.get(column);
+                if (!pixel.isWhite()) {
+                    getCurrentPosition().update(column * 5, row + 500);
+                    LeverAngles leverAngles = getLeverAngles();
+                    leverAnglesList.add(leverAngles);
+                }
+            }
+        }
+        return leverAnglesList;
+    }
 }

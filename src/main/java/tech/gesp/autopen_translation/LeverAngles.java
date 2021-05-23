@@ -1,7 +1,9 @@
-package tech.gesp;
+package tech.gesp.autopen_translation;
 
 import lombok.AllArgsConstructor;
+import lombok.ToString;
 
+@ToString
 @AllArgsConstructor
 public class LeverAngles {
 
@@ -15,5 +17,4 @@ public class LeverAngles {
     public double getSecond() {
         return secondAngle;
     }
-
 }
