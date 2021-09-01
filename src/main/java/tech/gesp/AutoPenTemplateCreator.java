@@ -14,7 +14,7 @@ import java.util.List;
 public class AutoPenTemplateCreator {
 
     public static void main(String[] args) {
-        File signatureImageFile = new File("C:\\Users\\user\\Pictures\\signature_test.png");
+        File signatureImageFile = new File("C:\\Users\\Robin\\Desktop\\AutoPen-Template-Creator\\src\\main\\resources\\lul.png");
 
         FiveBar fiveBar = new FiveBar(500, 300, 150, 100, 130);
         PixelImage pixelImage = new PixelImage(ImageReader.readImage(signatureImageFile.toPath()));
@@ -23,7 +23,9 @@ public class AutoPenTemplateCreator {
         VectorShape vectorShape = new VectorShape(blackPixelPositions);
         List<Vector2D> intersectionVectors = vectorShape.getAllIntersections(1);
 
-        GridPrinter.printDebuggingGrid(pixelImage, intersectionVectors);
+        List<Vector2D> sortedPixelList = fiveBar.getSortedPixelImagePixelList(pixelImage);
+
+        GridPrinter.printSortedDebuggingGrid(pixelImage, sortedPixelList);
 
         List<LeverAngles> leverAnglesForImage = fiveBar.generateLeverAnglesFromPixelImage(pixelImage);
         leverAnglesForImage.forEach(System.out::println);
