@@ -5,6 +5,7 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
 import tech.gesp.maths.Vector2D;
 
@@ -17,7 +18,7 @@ import java.util.List;
 public class VectorListToXlsGenerator {
 
     public void generate(List<Vector2D> moldPositions, String outputPath) throws IOException {
-        Workbook workbook = new HSSFWorkbook();
+        Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet();
 
         int rowCount = 0;
@@ -26,6 +27,8 @@ public class VectorListToXlsGenerator {
             Row row = sheet.createRow(++rowCount);
             writeVector(vector, row);
         }
+
+        writeVector(moldPositions.get(0), sheet.createRow(++rowCount));
 
         try (FileOutputStream outputStream = new FileOutputStream(outputPath + "\\mold_output.xlsx")) {
             workbook.write(outputStream);
