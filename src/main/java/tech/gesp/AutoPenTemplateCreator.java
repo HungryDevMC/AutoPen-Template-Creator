@@ -15,6 +15,7 @@ import tech.gesp.image_processing.VectorShape;
 import tech.gesp.maths.Vector2D;
 import tech.gesp.mold_creation.MoldCreationFactory;
 import tech.gesp.mold_creation.StraightMoldTranslationImpl;
+import tech.gesp.mold_creation.xls.VectorListToXlsGenerator;
 import tech.gesp.utils.GridPrinter;
 
 import java.io.File;
@@ -22,10 +23,11 @@ import java.util.List;
 
 @SpringBootApplication
 @EnableAutoConfiguration
+@RequiredArgsConstructor
 public class AutoPenTemplateCreator implements CommandLineRunner {
 
-    @Autowired
-    private MoldCreationFactory moldCreationFactory;
+    private final MoldCreationFactory moldCreationFactory;
+    private final VectorListToXlsGenerator vectorListToXlsGenerator;
 
     public static void main(String[] args) {
         SpringApplication.run(AutoPenTemplateCreator.class, args);
@@ -51,5 +53,7 @@ public class AutoPenTemplateCreator implements CommandLineRunner {
 
         List<Vector2D> moldCoordinates = moldCreationFactory.create().translate(leverAnglesForImage);
         moldCoordinates.forEach(System.out::println);
+
+        vectorListToXlsGenerator.generate(moldCoordinates, signatureImageFile.getParent());
     }
 }
