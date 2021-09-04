@@ -1,9 +1,10 @@
 package tech.gesp.mold_creation;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tech.gesp.autopen_translation.LeverAngles;
+import tech.gesp.configuration.MoldCreationConfiguration;
+import tech.gesp.configuration.PhysicalConfiguration;
 import tech.gesp.maths.Vector2D;
 
 import java.util.Collections;
@@ -13,8 +14,12 @@ import java.util.List;
 @Service
 public class StraightMoldTranslationImpl extends AbstractLeverAngleToMoldTranslation {
 
-    public StraightMoldTranslationImpl(MoldCreationSettings moldCreationSettings) {
-        super(moldCreationSettings);
+    private PhysicalConfiguration physicalConfiguration;
+
+    @Autowired
+    public StraightMoldTranslationImpl(MoldCreationConfiguration moldCreationConfiguration, PhysicalConfiguration physicalConfiguration) {
+        super(moldCreationConfiguration);
+        this.physicalConfiguration = physicalConfiguration;
     }
 
     @Override
@@ -26,6 +31,7 @@ public class StraightMoldTranslationImpl extends AbstractLeverAngleToMoldTransla
             LeverAngles currentAngles = leverAnglesList.get(angleIndex);
             Vector2D firstSidePosition = angleToVector(currentAngles.getFirst(), angleIndex);
             Vector2D secondSidePosition = angleToVector(currentAngles.getSecond(), angleIndex);
+            secondSidePosition.update(secondSidePosition.getXComponent() + physicalConfiguration.getHingeDistance(), secondSidePosition.getYComponent());
             finalPointsList.add(firstSidePosition);
             secondSideList.add(secondSidePosition);
         }

@@ -1,8 +1,8 @@
 package tech.gesp.mold_creation;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tech.gesp.configuration.MoldCreationConfiguration;
 
 import java.util.EnumMap;
 
@@ -10,14 +10,14 @@ import java.util.EnumMap;
 public class MoldCreationFactory {
 
     private StraightMoldTranslationImpl straightMoldTranslation;
-    private MoldCreationSettings moldCreationSettings;
+    private MoldCreationConfiguration moldCreationConfiguration;
 
     private final EnumMap<MoldType, LeverAngleToMoldTranslation> ANGLE_TO_MOLD_TRANSLATION_ENUM_MAP = new EnumMap<>(MoldType.class);
 
     @Autowired
-    public MoldCreationFactory(StraightMoldTranslationImpl straightMoldTranslation, MoldCreationSettings moldCreationSettings) {
+    public MoldCreationFactory(StraightMoldTranslationImpl straightMoldTranslation, MoldCreationConfiguration moldCreationConfiguration) {
         this.straightMoldTranslation = straightMoldTranslation;
-        this.moldCreationSettings = moldCreationSettings;
+        this.moldCreationConfiguration = moldCreationConfiguration;
         ANGLE_TO_MOLD_TRANSLATION_ENUM_MAP.put(straightMoldTranslation.moldType(), straightMoldTranslation);
     }
 
@@ -27,7 +27,7 @@ public class MoldCreationFactory {
     }
 
     public LeverAngleToMoldTranslation create() {
-        return create(moldCreationSettings.getSelectedMoldType());
+        return create(moldCreationConfiguration.getSelectedMoldType());
     }
 
 }
