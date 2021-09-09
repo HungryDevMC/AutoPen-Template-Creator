@@ -1,13 +1,14 @@
 package tech.gesp.autopen_translation;
 
 import lombok.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
+import tech.gesp.configuration.PhysicalConfiguration;
 import tech.gesp.image_processing.Pixel;
 import tech.gesp.image_processing.PixelImage;
 import tech.gesp.maths.TrigonometryUtil;
 import tech.gesp.maths.Vector2D;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Getter
 public class FiveBar {
@@ -15,30 +16,41 @@ public class FiveBar {
     private Vector2D currentPosition;
     private double smallerToLeverAngle;
     private double topLength;
-    private double smallerLength;
+    private double bottomLength;
     private double leverLength;
     private double hingeDistance;
+    private double startingOffsetX = 0;
+    private double startingOffsetY = 0;
 
-    public FiveBar(double topLength, double smallerLength, double leverLength, double hingeDistance, double smallerToLeverAngle) {
+    public FiveBar(double topLength, double bottomLength, double leverLength, double hingeDistance, double smallerToLeverAngle) {
         this.topLength = topLength;
-        this.smallerLength = smallerLength;
+        this.bottomLength = bottomLength;
         this.leverLength = leverLength;
         this.hingeDistance = hingeDistance;
         this.smallerToLeverAngle = smallerToLeverAngle;
         this.currentPosition = new Vector2D(0, 0);
     }
 
-    public Vector2D getHypothenuseFirst() {
-        return new Vector2D(currentPosition.getXComponent() + (hingeDistance / 2), currentPosition.getYComponent());
+    public void setStartingOffsets(double offsetX, double offsetY) {
+        this.startingOffsetX = offsetX;
+        this.startingOffsetY = offsetY;
     }
 
-    public Vector2D getHypothenuseSecond() {
-        return new Vector2D(currentPosition.getXComponent() - (hingeDistance / 2), currentPosition.getYComponent());
+    public double getMaxRange() {
+        return this.topLength;
     }
 
-    public LeverAngles getLeverAngles() {
-        Vector2D h1Vector = getHypothenuseFirst();
-        Vector2D h2Vector = getHypothenuseSecond();
+    public Vector2D getHypothenuseFirst(Vector2D realPosition) {
+        return new Vector2D(realPosition.getXComponent() + (hingeDistance / 2), realPosition.getYComponent());
+    }
+
+    public Vector2D getHypothenuseSecond(Vector2D realPosition) {
+        return new Vector2D(realPosition.getXComponent() - (hingeDistance / 2), realPosition.getYComponent());
+    }
+
+    public LeverAngles getLeverAngles(Vector2D realPosition) {
+        Vector2D h1Vector = getHypothenuseFirst(realPosition);
+        Vector2D h2Vector = getHypothenuseSecond(realPosition);
         double h1Length = Math.sqrt(TrigonometryUtil.square(h1Vector.getXComponent()) + TrigonometryUtil.square(h1Vector.getYComponent()));
         double h2Length = Math.sqrt(TrigonometryUtil.square(h2Vector.getXComponent()) + TrigonometryUtil.square(h2Vector.getYComponent()));
 
@@ -48,7 +60,7 @@ public class FiveBar {
     }
 
     public double getLeverAngle(double h1Length, double h2Length) {
-        double angleH1 = TrigonometryUtil.getAcosAngle(h1Length, smallerLength, topLength);
+        double angleH1 = TrigonometryUtil.getAcosAngle(h1Length, bottomLength, topLength);
         double angleH1O1 = TrigonometryUtil.getAcosAngle(hingeDistance, h1Length, h2Length);
         double angleO1 = 360 - angleH1 - angleH1O1 - smallerToLeverAngle;
         return angleO1 - 90;
@@ -66,21 +78,5 @@ public class FiveBar {
             }
         }
         return blackPixelPositions;
-    }
-
-    public List<LeverAngles> generateLeverAnglesFromPixelImage(PixelImage pixelImage) {
-        List<LeverAngles> leverAnglesList = new ArrayList<>();
-        for (int row = 0; row < pixelImage.getPixels().size(); row++) {
-            List<Pixel> pixelRow = pixelImage.getPixels().get(row);
-            for (int column = 0; column < pixelRow.size(); column++) {
-                Pixel pixel = pixelRow.get(column);
-                if (!pixel.isWhite()) {
-                    getCurrentPosition().update(column * 5, row + 500);
-                    LeverAngles leverAngles = getLeverAngles();
-                    leverAnglesList.add(leverAngles);
-                }
-            }
-        }
-        return leverAnglesList;
     }
 }

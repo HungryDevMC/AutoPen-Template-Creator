@@ -1,0 +1,12 @@
+
+O
+java:S1128"-Remove this unused import 'java.util.Vector'.(ÿŒ¸Áÿÿÿÿÿ8ùÂÌ›º/
+T	java:S106&"9Replace this use of System.out or System.err by a logger.(°•Ş8óú¾™º/
+M	java:S106"9Replace this use of System.out or System.err by a logger.(°•Ş
+V
+java:S1118
+":Add a private constructor to hide the implicit public one.(¿£¤H8‡ÅÔ›º/
+Z	java:S106$"9Replace this use of System.out or System.err by a logger.(Ê«Ÿ–üÿÿÿÿ8óú¾™º/
+G
+java:S1481"*Remove this unused "count" local variable.(æÕ¿¼8ŠÔ›º/
+S	java:S106"9Replace this use of System.out or System.err by a logger.(Ê«Ÿ–üÿÿÿÿ

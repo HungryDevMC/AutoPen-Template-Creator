@@ -1,0 +1,15 @@
+
+m
+java:S1128"PRemove this unused import 'tech.gesp.mold_creation.StraightMoldTranslationImpl'.(ËÿÂ¾8˜ôÚ¿º/
+h
+java:S1128	"KRemove this unused import 'org.springframework.context.ApplicationContext'.(»Ô»¿8˜ôÚ¿º/
+c
+java:S1075&"ARefactor your code to get this URI from a customizable parameter.(÷¹†òûÿÿÿÿ8˜ôÚ¿º/
+u
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8˜ôÚ¿º/
+Z	java:S1067"9Replace this use of System.out or System.err by a logger.(§÷Àÿÿÿÿÿ8˜ôÚ¿º/
+d
+java:S1854-"GRemove this useless assignment to local variable "intersectionVectors".(Á´æ‚8˜ôÚ¿º/
+U
+java:S1481-"8Remove this unused "intersectionVectors" local variable.(Á´æ‚8˜ôÚ¿º/
+U	java:S1064"9Replace this use of System.out or System.err by a logger.(ã³’…8˜ôÚ¿º/

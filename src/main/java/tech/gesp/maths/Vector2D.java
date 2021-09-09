@@ -3,6 +3,7 @@ package tech.gesp.maths;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
+import tech.gesp.autopen_translation.LeverAngles;
 
 @AllArgsConstructor
 @Getter
