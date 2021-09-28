@@ -1,18 +1,21 @@
-C:\Users\Robin\Desktop\AutoPen-Template-Creator\src\main\java\tech\gesp\mold_creation\MoldType.java
-C:\Users\Robin\Desktop\AutoPen-Template-Creator\src\main\java\tech\gesp\mold_creation\MoldCreationSettings.java
-C:\Users\Robin\Desktop\AutoPen-Template-Creator\src\main\java\tech\gesp\maths\Vector2D.java
-C:\Users\Robin\Desktop\AutoPen-Template-Creator\src\main\java\tech\gesp\image_processing\ImageReader.java
-C:\Users\Robin\Desktop\AutoPen-Template-Creator\src\main\java\tech\gesp\image_processing\VectorShape.java
-C:\Users\Robin\Desktop\AutoPen-Template-Creator\src\main\java\tech\gesp\image_processing\Pixel.java
-C:\Users\Robin\Desktop\AutoPen-Template-Creator\src\main\java\tech\gesp\maths\TrigonometryUtil.java
-C:\Users\Robin\Desktop\AutoPen-Template-Creator\src\main\java\tech\gesp\autopen_translation\LeverAngles.java
-C:\Users\Robin\Desktop\AutoPen-Template-Creator\src\main\java\tech\gesp\utils\GridPrinter.java
-C:\Users\Robin\Desktop\AutoPen-Template-Creator\src\main\java\tech\gesp\utils\ConsoleColor.java
-C:\Users\Robin\Desktop\AutoPen-Template-Creator\src\main\java\tech\gesp\autopen_translation\FiveBar.java
-C:\Users\Robin\Desktop\AutoPen-Template-Creator\src\main\java\tech\gesp\mold_creation\xls\VectorListToXlsGenerator.java
-C:\Users\Robin\Desktop\AutoPen-Template-Creator\src\main\java\tech\gesp\AutoPenTemplateCreator.java
-C:\Users\Robin\Desktop\AutoPen-Template-Creator\src\main\java\tech\gesp\mold_creation\MoldCreationFactory.java
-C:\Users\Robin\Desktop\AutoPen-Template-Creator\src\main\java\tech\gesp\image_processing\PixelImage.java
-C:\Users\Robin\Desktop\AutoPen-Template-Creator\src\main\java\tech\gesp\mold_creation\StraightMoldTranslationImpl.java
-C:\Users\Robin\Desktop\AutoPen-Template-Creator\src\main\java\tech\gesp\mold_creation\AbstractLeverAngleToMoldTranslation.java
-C:\Users\Robin\Desktop\AutoPen-Template-Creator\src\main\java\tech\gesp\mold_creation\LeverAngleToMoldTranslation.java
+C:\Users\user\Documents\AutoPen Template Creator\src\main\java\tech\gesp\mold_creation\StraightMoldTranslationImpl.java
+C:\Users\user\Documents\AutoPen Template Creator\src\main\java\tech\gesp\maths\TrigonometryUtil.java
+C:\Users\user\Documents\AutoPen Template Creator\src\main\java\tech\gesp\configuration\PhysicalConfiguration.java
+C:\Users\user\Documents\AutoPen Template Creator\src\main\java\tech\gesp\image_processing\Pixel.java
+C:\Users\user\Documents\AutoPen Template Creator\src\main\java\tech\gesp\image_processing\PixelImage.java
+C:\Users\user\Documents\AutoPen Template Creator\src\main\java\tech\gesp\mold_creation\LeverAngleToMoldTranslation.java
+C:\Users\user\Documents\AutoPen Template Creator\src\main\java\tech\gesp\image_processing\ImageReader.java
+C:\Users\user\Documents\AutoPen Template Creator\src\main\java\tech\gesp\image_processing\PixelImageToVectorConverter.java
+C:\Users\user\Documents\AutoPen Template Creator\src\main\java\tech\gesp\maths\Vector2D.java
+C:\Users\user\Documents\AutoPen Template Creator\src\main\java\tech\gesp\image_processing\VectorShape.java
+C:\Users\user\Documents\AutoPen Template Creator\src\main\java\tech\gesp\mold_creation\AbstractLeverAngleToMoldTranslation.java
+C:\Users\user\Documents\AutoPen Template Creator\src\main\java\tech\gesp\mold_creation\MoldCreationFactory.java
+C:\Users\user\Documents\AutoPen Template Creator\src\main\java\tech\gesp\autopen_translation\LeverAngles.java
+C:\Users\user\Documents\AutoPen Template Creator\src\main\java\tech\gesp\mold_creation\xls\VectorListToXlsGenerator.java
+C:\Users\user\Documents\AutoPen Template Creator\src\main\java\tech\gesp\utils\ConsoleColor.java
+C:\Users\user\Documents\AutoPen Template Creator\src\main\java\tech\gesp\mold_creation\MoldType.java
+C:\Users\user\Documents\AutoPen Template Creator\src\main\java\tech\gesp\autopen_translation\VirtualToRealPositionTranslator.java
+C:\Users\user\Documents\AutoPen Template Creator\src\main\java\tech\gesp\utils\GridPrinter.java
+C:\Users\user\Documents\AutoPen Template Creator\src\main\java\tech\gesp\AutoPenTemplateCreator.java
+C:\Users\user\Documents\AutoPen Template Creator\src\main\java\tech\gesp\autopen_translation\FiveBar.java
+C:\Users\user\Documents\AutoPen Template Creator\src\main\java\tech\gesp\configuration\MoldCreationConfiguration.java

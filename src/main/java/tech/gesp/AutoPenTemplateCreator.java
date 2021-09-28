@@ -33,7 +33,7 @@ public class AutoPenTemplateCreator implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        File signatureImageFile = new File("C:\\Users\\Robin\\Desktop\\AutoPen-Template-Creator\\src\\main\\resources\\lul.png");
+        File signatureImageFile = new File("C:\\Users\\user\\Documents\\AutoPen Template Creator\\src\\main\\resources\\lul.png");
 
         FiveBar fiveBar = new FiveBar(physicalConfiguration.getLongLegLength(), physicalConfiguration.getShortLegLength(), physicalConfiguration.getLeverLength(),
                 physicalConfiguration.getHingeDistance(), physicalConfiguration.getAngleBetweenLeverAndShortLeg());

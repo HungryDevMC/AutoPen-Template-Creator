@@ -23,4 +23,6 @@ public class PhysicalConfiguration {
     private double yRangeTolerancePercentage;
     @Value("${x_range_tolerance_percentage}")
     private double xRangeTolerancePercentage;
+    @Value("${pen_width}")
+    private double penWidth;
 }

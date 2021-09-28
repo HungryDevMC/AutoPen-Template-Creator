@@ -5,9 +5,12 @@ import org.springframework.stereotype.Service;
 import tech.gesp.autopen_translation.FiveBar;
 import tech.gesp.autopen_translation.LeverAngles;
 import tech.gesp.autopen_translation.VirtualToRealPositionTranslator;
+import tech.gesp.configuration.PhysicalConfiguration;
 import tech.gesp.maths.Vector2D;
 import tech.gesp.configuration.MoldCreationConfiguration;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,6 +22,7 @@ import java.util.stream.Collectors;
 public class PixelImageToVectorConverter {
 
     private final MoldCreationConfiguration moldCreationConfiguration;
+    private final PhysicalConfiguration physicalConfiguration;
     private final VirtualToRealPositionTranslator virtualToRealPositionTranslator;
 
     public List<LeverAngles> generateMoldLeverAngles(FiveBar fiveBar, PixelImage pixelImage) {
@@ -32,7 +36,10 @@ public class PixelImageToVectorConverter {
             for (int column = 0; column < pixelRow.size(); column++) {
                 Pixel pixel = pixelRow.get(column);
                 if (!pixel.isWhite()) {
-                    blackPixelsList.add(pixel.getPosition());
+
+                    double translatedX = Math.round(pixel.getPosition().getXComponent() * physicalConfiguration.getPenWidth()) / 10.0;
+                    double translatedY = Math.round(pixel.getPosition().getYComponent() * physicalConfiguration.getPenWidth()) / 10.0;
+                    blackPixelsList.add(new Vector2D(translatedX, translatedY));
                 }
             }
         }
@@ -108,6 +115,8 @@ public class PixelImageToVectorConverter {
     private List<LeverAngles> convertPixelsToLeverAngles(FiveBar fiveBar, List<Vector2D> pixelVectorList) {
         Vector2D smallestComponentValuesVector = findSmallestComponentValues(pixelVectorList);
         fiveBar.setStartingOffsets(smallestComponentValuesVector.getXComponent(), smallestComponentValuesVector.getYComponent());
+        DecimalFormat df = new DecimalFormat("#.#");
+        df.setRoundingMode(RoundingMode.CEILING);
         return pixelVectorList.stream()
                 .map(vector -> {
                     fiveBar.getCurrentPosition().update(vector.getXComponent() - fiveBar.getStartingOffsetX(), vector.getYComponent() + moldCreationConfiguration.getDrawingOffset() - fiveBar.getStartingOffsetY());
@@ -117,7 +126,7 @@ public class PixelImageToVectorConverter {
                         leverAngles.setShouldPickUp(true);
                     }
 
-                    System.out.println("DEBUG: " + fiveBar.getCurrentPosition().getXComponent() + ", " + fiveBar.getCurrentPosition().getYComponent() + " -> " + leverAngles.getFirst() + ", " + leverAngles.getSecond() + (leverAngles.shouldPickUp() ? " (PickUp)" : ""));
+                    System.out.println("DEBUG: " + df.format(fiveBar.getCurrentPosition().getXComponent()) + ", " + df.format(fiveBar.getCurrentPosition().getYComponent()) + " -> " + leverAngles.getFirst() + ", " + leverAngles.getSecond() + (leverAngles.shouldPickUp() ? " (PickUp)" : ""));
                     return leverAngles;
                 })
                 .collect(Collectors.toList());
